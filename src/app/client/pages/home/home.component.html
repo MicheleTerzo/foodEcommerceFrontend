@@ -1,0 +1,57 @@
+<div class="jumbotron flex justify-content-center align-items-center mb-3 border-1 border-gray-600">
+  Explore offers!
+</div>
+<div class="categories px-1 md:px-5 lg:px-8 mb-3 border-1 border-gray-600">
+  <div class="grid">
+    @for (category of foodCategories; track foodCategories) {
+      <div class="col-4 md:col-3 lg:col flex justify-content-center align-items-center cursor-pointer"
+           (click)="onCategoryClick(category)">
+        <div class="category-box flex flex-column align-items-center">
+          <img [src]="'assets/img/categories/' + category.name + '.png'"
+               alt="category-logo">
+          {{ category.name }}
+        </div>
+      </div>
+    }
+  </div>
+</div>
+<div class="top-restaurants max-h-50rem overflow-hidden px-1 md:px-5 lg:px-8">
+  <div class="grid">
+    @for (restaurant of restaurantData$ | async; track restaurant.id) {
+      <div class="col-12 md:col-6 lg:col-4 p-5">
+        <div
+          class="restaurantCard h-10rem p-3 flex flex-column justify-content-between  border-1 border-gray-600 border-round-2xl">
+          <div class="flex justify-content-between flex-wrap">
+            <h3 class="mt-0 mb-1">{{ restaurant.name }}</h3>
+            <div>
+              @for (categoryId of restaurant.categories; track categoryId) {
+                <p-chip [label]="foodCategories[categoryId - 1].name"
+                        class="mr-2"
+                        styleClass="text-sm"/>
+              }
+            </div>
+          </div>
+          <div class="actionRow flex flex-wrap justify-content-between align-items-center">
+            <div class="flex align-items-center">
+              <img src="assets/icons/star.png"
+                   width="30px"
+                   alt="">
+              {{ restaurant.rating }}
+            </div>
+            <p-button [rounded]="true"
+                      [size]="'small'"
+                      severity="warning"
+                      label="Order now!"/>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+  <div
+    class="discoverMoreContainer h-20rem w-full flex justify-content-center align-items-end p-5 border-1 border-red-100">
+    <p-button [text]="true"
+              [rounded]="true"
+              label="Discover more"/>
+  </div>
+</div>
+
