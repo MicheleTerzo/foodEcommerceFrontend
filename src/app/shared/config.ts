@@ -1,5 +1,10 @@
 import {CategoryModel} from './models/category.model';
 
+export enum ROUTES {
+  HOME = 'home',
+  RESTAURANT_DETAIL = 'detail'
+}
+
 export const FOOD_CATEGORIES: CategoryModel[] = [
   {
     id: 1,
@@ -38,3 +43,5 @@ export const FOOD_CATEGORIES: CategoryModel[] = [
     name: 'Dessert'
   }
 ];
+
+

@@ -41,6 +41,7 @@
             <p-button [rounded]="true"
                       [size]="'small'"
                       severity="warning"
+                      (onClick)="navigateToRestaurantDetail(restaurant)"
                       label="Order now!"/>
           </div>
         </div>
@@ -48,9 +49,9 @@
     }
   </div>
   <div
-    class="discoverMoreContainer h-20rem w-full flex justify-content-center align-items-end p-5 border-1 border-red-100">
-    <p-button [text]="true"
-              [rounded]="true"
+    class="discoverMoreContainer h-10rem w-full flex justify-content-center align-items-end p-5 border-1 border-red-100">
+    <p-button [rounded]="true"
+              severity="warning"
               label="Discover more"/>
   </div>
 </div>
